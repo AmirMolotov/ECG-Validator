@@ -1,4 +1,4 @@
-array = [1,2,1,2,4,2,3,5,2,1,6,2,4,8,2,1]
+array = [1,2,4,1,2,4,1,2,5]
 def areMotif(arr1,arr2,k,tolerance):
     i=0
     j=0
@@ -21,7 +21,7 @@ def bruteForce(array,k,tolerance):
         temp = array[i:i+k]
         if (len(temp)==k):
             for j in range(i+1,len(array)):
-                if(j+k<=len(array)-1 and areMotif(temp,array[j:j+k],k,tolerance)==True):
+                if(j+k<=len(array) and areMotif(temp,array[j:j+k],k,tolerance)==True):
                     print(temp[:])
                     print(array[j:j+k])
 
