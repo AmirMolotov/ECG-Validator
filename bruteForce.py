@@ -11,9 +11,28 @@ def randomDataSetGen(lines,length,mode):
             inside = [chr(random.randint(65,90)) for item in range(length)]
             array.append(inside)
     return array
-# array ="sjdbbnvfdfpqoeutyvnABABABmbzchslfkeruyousjdq"
+
+def writeToFile(array):
+    f = open("./data.txt","w")
+    for i in range(len(array)):
+        for j in range(len(array[i])):
+            f.write(array[i][j])
+        f.write("\n")
+
+def readFromFile(array):
+    f = open("./data.txt","r")
+    i=0
+    for line in f:
+        array[i]=list(line[:-2:])
+        i+=1
+
+    return array
+
 arr =randomDataSetGen(9,9,"string")
-# print(arr)
+writeToFile(arr)
+readFromFile(arr)
+
+
 def areMotif(arr1,arr2,k,tolerance):
     i=0
     j=0
