@@ -28,10 +28,9 @@ def readFromFile(array):
 
     return array
 
-arr =randomDataSetGen(9,9,"string")
+arr =randomDataSetGen(10,100,"string")
 writeToFile(arr)
 readFromFile(arr)
-
 
 def areMotif(arr1,arr2,k,tolerance):
     i=0
@@ -65,4 +64,6 @@ def bruteForce(array,k,tolerance):
             flag = 0
 
 
-bruteForce(arr[0],3,1)
+for element in arr:
+    bruteForce(element,3,2)
+    print ("<------------NEXT-LINE------------>")
