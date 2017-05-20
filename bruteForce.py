@@ -1,3 +1,4 @@
+import time
 import random
 import math
 def randomDataSetGen(lines,length,mode):
@@ -27,10 +28,6 @@ def readFromFile(array):
         i+=1
 
     return array
-
-arr =randomDataSetGen(10,100,"string")
-writeToFile(arr)
-readFromFile(arr)
 
 def areMotif(arr1,arr2,k,tolerance):
     i=0
@@ -62,8 +59,16 @@ def bruteForce(array,k,tolerance):
                     print(array[j:j+k])
             print
             flag = 0
+#<----------------------------------------------------------------------------------------------->
 
-
+arr =randomDataSetGen(10,100,"string")
+writeToFile(arr)
+readFromFile(arr)
+timeArr=[]
 for element in arr:
-    bruteForce(element,3,2)
+    start_time = time.time()
+    bruteForce(element,3,1)
     print ("<------------NEXT-LINE------------>")
+    elapsed_time = time.time() - start_time
+    timeArr.append(elapsed_time)
+print timeArr
