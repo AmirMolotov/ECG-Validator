@@ -1,4 +1,19 @@
-array ="ABCABDABCAFkkkkkkkkC" 
+import random
+import math
+def randomDataSetGen(lines,length,mode):
+    array = []
+    if mode=="num":
+        for i in range(lines):
+                inside = [random.sample(range(10),1) for item in range(length)]
+                array.append(inside)
+    elif mode=="string":
+        for i in range (lines):
+            inside = [chr(random.randint(65,90)) for item in range(length)]
+            array.append(inside)
+    return array
+# array ="sjdbbnvfdfpqoeutyvnABABABmbzchslfkeruyousjdq"
+arr =randomDataSetGen(9,9,"string")
+# print(arr)
 def areMotif(arr1,arr2,k,tolerance):
     i=0
     j=0
@@ -31,4 +46,4 @@ def bruteForce(array,k,tolerance):
             flag = 0
 
 
-bruteForce(array,3,1)
+bruteForce(arr[0],3,1)
