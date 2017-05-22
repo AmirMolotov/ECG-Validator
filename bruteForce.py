@@ -5,7 +5,7 @@ def randomDataSetGen(lines,length,mode):
    array = []
    if mode=="num":
        for i in range(lines):
-               inside = [random.sample(range(10),1) for item in range(length)]###
+               inside = [chr(random.randint(48,57)) for item in range(length)]###
                array.append(inside)
    elif mode=="string":
        for i in range (lines):
@@ -16,13 +16,13 @@ def writeToFile(array):
    f = open("./input.txt","w")
    for i in range(len(array)):
        for j in range(len(array[i])):
-           f.write(array[i][j])
+           f.write(array[i][j][0])
        f.write("\n")
 def readFromFile(array):
    f = open("./input.txt","r")
    i=0
    for line in f:
-       array[i]=list(line[:-2:])
+       array.append(list(line[:-2:]))
        i+=1
    return array
 def areMotif(arr1,arr2,k,tolerance):
@@ -65,16 +65,17 @@ def bruteForce(array,k,tolerance):
                f.write("\n")
            flag = 0
 #<----------------------------------------------------------------------------------------------->
-arr =randomDataSetGen(10,100,"string")
+arr =randomDataSetGen(10,300,"num")
 writeToFile(arr)
-readFromFile(arr)
-timeArr=[]
+arr = []
+arr = readFromFile(arr)
+
 f = open("./output.txt","a")
-for element in arr:
-   start_time = time.time()
-   bruteForce(element,3,1)
-   f.write("<------------NEXT-LINE------------>\n")
-   print ("<------------NEXT-LINE------------>")
-   elapsed_time = time.time() - start_time
-   timeArr.append(elapsed_time)
-print timeArr
+for tt in range(20):
+    start_time = time.time()
+    for element in arr:
+       bruteForce(element,tt+1,1)
+       f.write("<------------Next-300-Signals------------>\n")
+       print ("<------------NEXT-LINE------------>")
+    elapsed_time = time.time() - start_time
+    print (elapsed_time)
